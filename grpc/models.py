@@ -14,8 +14,8 @@ import os
 
 class Models():
     def __init__(self) -> None:
-        self.tf_model = tf.keras.models.load_model(os.path.join("..", "final_model"))
-        checkpoint = torch.load(os.path.join("..", "catvdog.pt"), map_location=torch.device('cpu'))
+        self.tf_model = tf.keras.models.load_model(os.path.join("final_model"))
+        checkpoint = torch.load(os.path.join("catvdog.pt"), map_location=torch.device('cpu'))
         self.pytorch_model = models.densenet121(pretrained=False)
         self.pytorch_model.classifier = nn.Sequential(nn.Linear(1024, 512),
                                         nn.ReLU(),
